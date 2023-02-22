@@ -1,20 +1,51 @@
+const chalk = require('chalk');
+const yargs = require('yargs');
 const getNotes = require('./notes.js');
 
-console.log(getNotes());
+// Customize yargs version
+yargs.version('1.1.0')
+
+// Create add command
+yargs.command({
+  command: 'add',
+  describe: 'Add a new note',
+  handler: function () {
+    console.log('Adding a new note!');
+  }
+});
+
+// Create remove command
+yargs.command({
+  command: 'remove',
+  describe: 'Remove a note',
+  handler: function () {
+    console.log('Removing the note!');
+  }
+});
 
 //
-// Challenge: Use the chalk library in your project
+// Challenge: Add two new commands
 //
-// 1. Install version 2.4.1 of chalk
-// 2. Load chalk into app.js
-// 3. Use it to print the string "Success!" to the console in green
-// 4. Test your work
-//
-// Bonus: Use docs to mess around with other styles. Make text bold and inversed.
+// 1. Setup command to support "list" command (print placeholder message for now)
+// 2. Setup command to support "read" command (print placeholder message for now)
+// 3. Test your work by running both commands and ensure correct output
 
-const chalk = require('chalk');
-// console.log(chalk.green('Success!'));
-// console.log(chalk.bold('Success!'));
-// console.log(chalk.inverse('Success!'));
+// Create list command
+yargs.command({
+  command: 'list',
+  describe: 'List your notes',
+  handler: function () {
+    console.log('Listing out all notes!');
+  }
+});
 
-console.log(chalk.green.bold.inverse('Success!'));
+// Create read command
+yargs.command({
+  command: 'read',
+  describe: 'Read a note',
+  handler: function () {
+    console.log('Reading a note!');
+  }
+});
+
+console.log(yargs.argv);
